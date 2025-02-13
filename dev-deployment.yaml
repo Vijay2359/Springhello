@@ -1,1 +1,28 @@
 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springboot-app
+  template:
+    metadata:
+      labels:
+        app: springboot-app
+    spec:
+      containers:
+      - name: springboot-app
+        image: vijay2359/my-springboot-app:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 7000
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        env:
+        - name: SERVER_PORT
+          value: "7000"
