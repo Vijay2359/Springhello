@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: springboot-app
-        image: vijay2359/my-springboot-app:qa  # Use specific QA-tagged image
+        image: vijay2359/my-springboot-app # Use specific QA-tagged image
         imagePullPolicy: Always
         ports:
         - containerPort: 7000
