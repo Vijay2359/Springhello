@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-deployment-qa
+spec:
+  replicas: 2  # Increased replicas for QA testing
+  selector:
+    matchLabels:
+      app: springboot-app
+  template:
+    metadata:
+      labels:
+        app: springboot-app
+    spec:
+      containers:
+      - name: springboot-app
+        image: vijay2359/my-springboot-app:qa  # Use specific QA-tagged image
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 7000
+        resources:
+          limits:
+            memory: "1Gi"   # Increased memory for QA
+            cpu: "1"        # Increased CPU for QA
+        env:
+        - name: SERVER_PORT
+          value: "7000"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-service-qa
+spec:
+  type: ClusterIP  # Internal access only
+  selector:
+    app: springboot-app
+  ports:
+    - protocol: TCP
+      port: 7000
+      targetPort: 7000
