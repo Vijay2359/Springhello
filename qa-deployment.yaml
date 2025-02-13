@@ -32,10 +32,11 @@ kind: Service
 metadata:
   name: springboot-service-qa
 spec:
-  type: ClusterIP  # Internal access only
+  type: NodePort
   selector:
     app: springboot-app
   ports:
     - protocol: TCP
       port: 7000
       targetPort: 7000
+      nodePort: 30008
