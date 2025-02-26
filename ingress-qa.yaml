@@ -7,13 +7,13 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: my-springboot.local
-      http:
-        paths:
-          - path: /qa
-            pathType: Prefix
-            backend:
-              service:
-                name: springboot-service
-                port:
-                  number: 7000
+  - host: my-springboot.local
+    http:
+      paths:
+      - path: /qa
+        pathType: Prefix
+        backend:
+          service:
+            name: springboot-service
+            port:
+              number: 7000  # Forward requests to service on port 7000
