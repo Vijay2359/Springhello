@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/")
-public class HelloController {
+public class App {
 
     @Value("${APP_COLOR:default}")
     private String appColor;
