@@ -1,13 +1,19 @@
-package com.example.hello_world;
+package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HelloWorldController {
+@RequestMapping("/")
+public class HelloController {
+
+    @Value("${APP_COLOR:default}")
+    private String appColor;
 
     @GetMapping("/hello")
     public String hello() {
-        return "Hello World! Testing code changes";
+        return "Hello World! The color is " + appColor;
     }
 }
