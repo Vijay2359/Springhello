@@ -1,4 +1,3 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -26,3 +25,8 @@ spec:
         env:
         - name: SERVER_PORT
           value: "7000"
+        - name: APP_COLOR
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: APP_COLOR
