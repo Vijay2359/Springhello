@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: dev.local
+  - host: qa.local
     http:
       paths:
       - path: /hello
@@ -21,10 +21,11 @@ spec:
 
   - host: qa.local
     http:
-     path: /
-     pathType: Prefix
-     backend:
-      service:
-         name: wordpress
-         port: 
-           number: 80
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: wordpress
+            port:
+              number: 80
